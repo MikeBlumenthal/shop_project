@@ -62,4 +62,16 @@ class StockItem
     SqlRunner.run( sql )
   end
 
+  def level()
+    if @quantity == 0
+      return "NONE"
+    elsif @quantity < @low_level
+      return "LOW"
+    elsif @quantity > @high_level
+      return "HIGH"
+    else
+      return "OK"
+    end
+  end
+
 end
