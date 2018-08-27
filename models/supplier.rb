@@ -3,24 +3,26 @@ require_relative('../db/sql_runner.rb')
 class Supplier
 
   attr_reader( :id )
-  attr_accessor( :name, :address, :telephone )
+  attr_accessor( :name, :address, :telephone, :email )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @address = options['address']
-    @telephone = options['telephone'].to_i
+    @telephone = options['telephone']
+    @email = options['email']
   end
 
   def save()
     sql = "INSERT INTO suppliers
     ( name,
       address,
-      telephone )
+      telephone,
+      email )
     VALUES
-    ( $1, $2, $3 )
+    ( $1, $2, $3, $4 )
     RETURNING id"
-    values [ @name, @address, @telephone ]
+    values = [ @name, @address, @telephone, @email ]
     result = SqlRunner.run( sql, values )
     @id = result.first['id'].to_i
   end
@@ -29,20 +31,20 @@ class Supplier
     sql ="SELECT * FROM stock WHERE supplier_id = $1"
     values = [@id]
     result = SqlRunner.run( sql, values)
-    return result.map { |stock_item| StockItem.new( stock_item ) }
+    result.map { |stock_item| StockItem.new( stock_item ) }
   end
-
 
   def update()
     sql = "UPDATE suppliers
     SET (
       name,
       address,
-      telephone
+      telephone,
+      email
     ) =
-    ( $1, $2, $3 )
+    ( $1, $2, $3, $5 )
     WHERE id = $4"
-    values = [ @name, @address, @telephone, @id ]
+    values = [ @name, @address, @telephone, @id, @email ]
     SqlRunner.run( sql, values )
   end
 
@@ -59,7 +61,7 @@ class Supplier
   end
 
   def self.delete_all()
-    sql = "DELETE * FROM suppliers"
+    sql = "DELETE FROM suppliers"
     SqlRunner.run( sql )
   end
 

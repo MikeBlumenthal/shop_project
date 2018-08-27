@@ -3,7 +3,7 @@ require_relative('../db/sql_runner.rb')
 class StockItem
 
   attr_reader( :id )
-  attr_accessor( :name, :supplier_id, :quantity, )
+  attr_accessor( :name, :supplier_id, :quantity, :style, :low_level, :high_level )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -27,7 +27,7 @@ class StockItem
     VALUES
     ( $1, $2, $3, $4, $5, $6 )
     RETURNING id"
-    values[ @name, @supplier_id, @quantity, @style, @low_level, @high_level ]
+    values = [ @name, @supplier_id, @quantity, @style, @low_level, @high_level ]
     result = SqlRunner.run( sql, values )
     @id = result.first['id'].to_i
   end
@@ -58,7 +58,7 @@ class StockItem
   end
 
   def self.delete_all()
-    sql = "DELETE * FROM stock"
+    sql = "DELETE FROM stock"
     SqlRunner.run( sql )
   end
 
