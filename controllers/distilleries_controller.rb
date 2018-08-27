@@ -10,6 +10,6 @@ get '/distilleries' do
   erb( :"distilleries/index")
 end
 
-get 'distilleries/new' do
-  erb( :"distilleries/new")
+get '/distilleries/new' do
+  erb( :"distilleries/new" )
 end
