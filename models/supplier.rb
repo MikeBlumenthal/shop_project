@@ -27,7 +27,7 @@ class Supplier
     @id = result.first['id'].to_i
   end
 
-  def all_stock()
+  def stock()
     sql ="SELECT * FROM stock WHERE supplier_id = $1"
     values = [@id]
     result = SqlRunner.run( sql, values)
@@ -54,7 +54,7 @@ class Supplier
     SqlRunner.run( sql, values )
   end
 
-  def self.find_all()
+  def self.all()
     sql = "SELECT * FROM suppliers"
     suppliers = SqlRunner.run( sql )
     return suppliers.map { |supplier| Supplier.new(supplier) }

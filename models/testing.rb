@@ -9,7 +9,8 @@ supplier1 = Supplier.new(
   {
     'name' => 'Stewarts',
     'address' => '15 Maltings Drive, Grantown',
-    'telephone' => '01244345678'
+    'telephone' => '01244345678',
+    'email' => 'stewartswhisky@yahoo.com'
   }
 )
 

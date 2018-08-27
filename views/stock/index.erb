@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Product</th>
+    <th></th>
+    <th>Quantity</th>
+    <th></th>
+    <th>Style</th>
+    <th></th>
+    <th>Level</th>
+    <th></th>
+    <th>Supplier</th>
+  </tr>
+  <% for stock in @stock %>
+  <tr>
+    <td><%=stock.name%></td>
+    <td> | </td>
+    <td><%=stock.quantity%></td>
+    <td> | </td>
+    <td><%=stock.style%></td>
+    <td> | </td>
+    <td><%=stock.level%></td>
+    <td> | </td>
+    <td><%=stock.supplier.name%></td>
+  </tr>
+    <% end %>
+</table>

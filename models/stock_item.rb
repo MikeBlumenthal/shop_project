@@ -51,17 +51,6 @@ class StockItem
     SqlRunner.run( sql, values )
   end
 
-  def self.find_all()
-    sql = "SELECT * FROM stock"
-    stock = SqlRunner.run( sql )
-    return stock.map { |item| StockItem.new( item ) }
-  end
-
-  def self.delete_all()
-    sql = "DELETE FROM stock"
-    SqlRunner.run( sql )
-  end
-
   def level()
     if @quantity == 0
       return "NONE"
@@ -73,5 +62,26 @@ class StockItem
       return "OK"
     end
   end
+
+  def supplier()
+    sql = "SELECT * FROM suppliers
+    WHERE id = $1"
+    values = [@supplier_id]
+    result = SqlRunner.run( sql, values )
+    supplier = result.map { |supplier| Supplier.new( supplier ) }
+    return supplier.first
+  end
+
+  def self.all()
+    sql = "SELECT * FROM stock"
+    stock = SqlRunner.run( sql )
+    return stock.map { |item| StockItem.new( item ) }
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM stock"
+    SqlRunner.run( sql )
+  end
+
 
 end
