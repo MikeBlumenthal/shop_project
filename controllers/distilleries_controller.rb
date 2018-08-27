@@ -5,7 +5,7 @@ require_relative('../models/supplier')
 require_relative('../models/distillery')
 also_reload( '../models/*' )
 
-get '/stock' do
-  @stock = StockItem.all
-  erb( :"stock/index" )
+get '/distilleries' do
+  @distilleries = Distillery.all
+  erb( :"distilleries/index")
 end

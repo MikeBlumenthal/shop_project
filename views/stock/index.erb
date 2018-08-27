@@ -1,5 +1,7 @@
 <table>
   <tr>
+    <th>Distillery</th>
+    <th></th>
     <th>Product</th>
     <th></th>
     <th>Quantity</th>
@@ -12,6 +14,8 @@
   </tr>
   <% for stock in @stock %>
   <tr>
+    <td><%=stock.distillery.name%></td>
+    <td> | </td>
     <td><%=stock.name%></td>
     <td> | </td>
     <td><%=stock.quantity%></td>

@@ -1,5 +1,22 @@
-<ul>
-  <% for supplier in @suppliers %>
-  <li><%=supplier.name%> <%=supplier.telephone%></li>
-  <% end %>
-</ul>
+<table>
+  <tr>
+    <th>Supplier</th>
+    <th></th>
+    <th>Address</th>
+    <th></th>
+    <th>Telephone</th>
+    <th></th>
+    <th>Email</th>
+  </tr>
+  <% for supplier in @suppliers%>
+  <tr>
+    <td><%=supplier.name%></td>
+    <td> | </td>
+    <td><%=supplier.address%></td>
+    <td> | </td>
+    <td><%=supplier.telephone%></td>
+    <td> | </td>
+    <td><%=supplier.email%></td>
+  </tr>
+    <% end %>
+</table>

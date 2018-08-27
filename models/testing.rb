@@ -1,9 +1,21 @@
 require('pry-byebug')
+require_relative('distillery.rb')
 require_relative('supplier.rb')
 require_relative('stock_item.rb')
 
 StockItem.delete_all
+Distillery.delete_all
 Supplier.delete_all
+
+distillery1 = Distillery.new(
+  {
+    'name' => 'Glenrothes',
+    'location' => 'Speyside',
+    'established' => '1878'
+    }
+  )
+
+distillery1.save
 
 supplier1 = Supplier.new(
   {
@@ -18,7 +30,8 @@ supplier1.save
 
 stock1 = StockItem.new(
   {
-    'name' => 'Glenrothes Select Reserve',
+    'name' => 'Select Reserve',
+    'distillery_id' => distillery1.id,
     'supplier_id' => supplier1.id,
     'style' => 'light',
     'low_level' => '5',
@@ -27,7 +40,8 @@ stock1 = StockItem.new(
 )
 stock2 = StockItem.new(
   {
-    'name' => 'Glenrothes Vintage Reserve',
+    'name' => 'Vintage Reserve',
+    'distillery_id' => distillery1.id,
     'supplier_id' => supplier1.id,
     'quantity' => '10',
     'style' => 'rich',

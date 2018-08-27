@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Distillery</th>
+    <th></th>
+    <th>Location</th>
+    <th></th>
+    <th>Established</th>
+  </tr>
+  <% for distillery in @distilleries%>
+  <tr>
+    <td><%=distillery.name%></td>
+    <td> | </td>
+    <td><%=distillery.location%></td>
+    <td> | </td>
+    <td><%=distillery.established%></td>
+  </tr>
+    <% end %>
+</table>

@@ -27,17 +27,11 @@ class Supplier
     @id = result.first['id'].to_i
   end
 
-  def stock()
-    sql ="SELECT * FROM stock WHERE supplier_id = $1"
-    values = [@id]
-    result = SqlRunner.run( sql, values)
-    result.map { |stock_item| StockItem.new( stock_item ) }
-  end
 
   def update()
     sql = "UPDATE suppliers
-    SET (
-      name,
+    SET
+    ( name,
       address,
       telephone,
       email
@@ -52,6 +46,13 @@ class Supplier
     sql = "DELETE FROM suppliers WHERE $1 = id"
     values = [@id]
     SqlRunner.run( sql, values )
+  end
+
+  def stock()
+    sql ="SELECT * FROM stock WHERE supplier_id = $1"
+    values = [@id]
+    result = SqlRunner.run( sql, values)
+    result.map { |stock_item| StockItem.new( stock_item ) }
   end
 
   def self.all()

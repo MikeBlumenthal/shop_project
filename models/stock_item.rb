@@ -3,11 +3,12 @@ require_relative('../db/sql_runner.rb')
 class StockItem
 
   attr_reader( :id )
-  attr_accessor( :name, :supplier_id, :quantity, :style, :low_level, :high_level )
+  attr_accessor( :name, :distillery_id, :supplier_id, :quantity, :style, :low_level, :high_level )
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    @distillery_id = options['distillery_id'].to_i
     @supplier_id = options['supplier_id'].to_i
     @quantity = options['quantity'].to_i || 0
     @style = options['style']
@@ -18,28 +19,34 @@ class StockItem
   def save()
     sql = "INSERT INTO stock
     ( name,
+      distillery_id,
       supplier_id,
       quantity,
       style,
       low_level,
-      high_level
-    )
+      high_level )
     VALUES
-    ( $1, $2, $3, $4, $5, $6 )
+    ( $1, $2, $3, $4, $5, $6, $7 )
     RETURNING id"
-    values = [ @name, @supplier_id, @quantity, @style, @low_level, @high_level ]
+    values = [ @name, @distillery_id, @supplier_id, @quantity, @style, @low_level, @high_level ]
     result = SqlRunner.run( sql, values )
     @id = result.first['id'].to_i
   end
 
   def update()
     sql = "UPDATE stock
-    SET (
-      name, supplier_id, quantity, style, low_level, high_level
+    SET
+    ( name,
+      distillery_id,
+      supplier_id,
+      quantity,
+      style,
+      low_level,
+      high_level
       ) =
-      ( $1, $2, $3, $4, $5, $6 )
-      WHERE id = $7"
-    values = [ @name, @supplier_id, @quantity, @style,
+      ( $1, $2, $3, $4, $5, $6, $7 )
+      WHERE id = $8"
+    values = [ @name, @distillery_id, @supplier_id, @quantity, @style,
         @low_level, @high_level, @id ]
     SqlRunner.run( sql, values )
   end
@@ -61,6 +68,15 @@ class StockItem
     else
       return "OK"
     end
+  end
+
+  def distillery()
+    sql = "SELECT * FROM distilleries
+    WHERE id = $1"
+    values = [@distillery_id]
+    data = SqlRunner.run( sql, values )
+    distillery = data.map { |distillery| Distillery.new( distillery ) }
+    return distillery.first
   end
 
   def supplier()
