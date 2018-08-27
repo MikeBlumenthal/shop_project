@@ -6,7 +6,7 @@ class Supplier
   attr_accessor( :name, :address, :telephone )
 
   def initialize(options)
-    @id = options['id'].to_i
+    @id = options['id'].to_i if options['id']
     @name = options['name']
     @address = options['address']
     @telephone = options['telephone'].to_i
@@ -25,6 +25,14 @@ class Supplier
     @id = result.first['id'].to_i
   end
 
+  def all_stock()
+    sql ="SELECT * FROM stock WHERE supplier_id = $1"
+    values = [@id]
+    result = SqlRunner.run( sql, values)
+    return result.map { |stock_item| StockItem.new( stock_item ) }
+  end
+
+
   def update()
     sql = "UPDATE suppliers
     SET (
@@ -35,12 +43,13 @@ class Supplier
     ( $1, $2, $3 )
     WHERE id = $4"
     values = [ @name, @address, @telephone, @id ]
+    SqlRunner.run( sql, values )
   end
 
-  def delete_by_id(id)
+  def delete()
     sql = "DELETE FROM suppliers WHERE $1 = id"
-    values = [id]
-    SqlRunner.run( sql, values)
+    values = [@id]
+    SqlRunner.run( sql, values )
   end
 
   def self.find_all()

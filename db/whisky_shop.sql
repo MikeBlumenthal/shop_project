@@ -1,4 +1,4 @@
-DROP TABLE stock_items;
+DROP TABLE stock;
 DROP TABLE suppliers;
 
 CREATE TABLE suppliers
@@ -9,7 +9,7 @@ CREATE TABLE suppliers
   telephone INT8 NOT NULL
 );
 
-CREATE TABLE stock_items
+CREATE TABLE stock
 (
   id serial8 PRIMARY KEY,
   name VARCHAR(255),
