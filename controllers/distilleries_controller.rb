@@ -9,3 +9,7 @@ get '/distilleries' do
   @distilleries = Distillery.all
   erb( :"distilleries/index")
 end
+
+get 'distilleries/new' do
+  erb( :"distilleries/new")
+end

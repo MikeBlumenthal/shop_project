@@ -9,3 +9,7 @@ get '/stock' do
   @stock = StockItem.all
   erb( :"stock/index" )
 end
+
+get '/stock/new' do
+  erb( :"stock/new" )
+end
