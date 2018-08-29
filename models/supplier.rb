@@ -61,9 +61,24 @@ class Supplier
     return suppliers.map { |supplier| Supplier.new(supplier) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM suppliers WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run( sql, values)
+    data = result.first
+    return Supplier.new( data )
+  end
+
   def self.delete_all()
     sql = "DELETE FROM suppliers"
     SqlRunner.run( sql )
+  end
+
+  def self.destroy(id)
+    sql = "DELETE FROM suppliers
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run( sql, values)
   end
 
 end

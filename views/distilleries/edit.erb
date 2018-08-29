@@ -1,0 +1,11 @@
+<h1>EDIT DETAILS</h1>
+<form action="/distilleries/<%=@distillery.id%>" method="post">
+  Name:
+  <input type="text" name="name" value="<%=@distillery.name%>"></input>
+  Location:
+  <input type="text" name="location" value="<%=@distillery.location%>"></input>
+  Established:
+  <input type="text" name="established" value="<%=@distillery.established%>"></input>
+  <input type="submit" value="Update">
+
+</form>

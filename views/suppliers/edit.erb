@@ -1,0 +1,13 @@
+<h1>UPDATE SUPPLIER</h1>
+
+<form action="/suppliers/<%=@supplier.id%>" method="post">
+Name:
+<input type="text" name="name" value="<%=@supplier.name%>"></input><br>
+Address:<br>
+<input type="text" name="address" value="<%=@supplier.address%>"></input><br>
+Phone:<br>
+<input type="text" name="telephone" value="<%=@supplier.telephone%>"></input><br>
+E-mail:<br>
+<input type="text" name="email" value="<%=@supplier.email%>"></input>
+<input type="submit" value="Update">
+</form>

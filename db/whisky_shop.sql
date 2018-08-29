@@ -28,5 +28,6 @@ CREATE TABLE stock
   quantity INT4,
   style VARCHAR(255),
   low_level INT4,
-  high_level INT4
+  cost_price NUMERIC,
+  sale_price NUMERIC
 )

@@ -1,18 +1,32 @@
 <table>
   <tr>
     <th>Distillery</th>
-    <th></th>
     <th>Location</th>
-    <th></th>
     <th>Established</th>
+    <th></th>
+    <th></th>
   </tr>
   <% for distillery in @distilleries%>
   <tr>
     <td><%=distillery.name%></td>
-    <td> | </td>
     <td><%=distillery.location%></td>
-    <td> | </td>
     <td><%=distillery.established%></td>
+    <td>
+      <form action="/distilleries/<%=distillery.id%>/edit" method="get">
+            <input type="submit" value="Change"/>
+      </form>
+    </td>
+    <td>
+      <% if StockItem.all_distillery_ids.include?(distillery.id) %>
+      <form action="/distilleries/<%=distillery.id%>/warning" method="get">
+        <input type="submit" value="Remove"/>
+      </form>
+      <% else %>
+      <form action="/distilleries/<%=distillery.id%>/delete" method="post">
+        <input type="submit" value="Remove"/>
+      </form>
+      <% end %>
+    </td>
   </tr>
     <% end %>
 </table>

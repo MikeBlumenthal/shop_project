@@ -1,22 +1,32 @@
 <table>
   <tr>
     <th>Supplier</th>
-    <th></th>
     <th>Address</th>
-    <th></th>
     <th>Telephone</th>
-    <th></th>
     <th>Email</th>
   </tr>
   <% for supplier in @suppliers%>
   <tr>
     <td><%=supplier.name%></td>
-    <td> | </td>
     <td><%=supplier.address%></td>
-    <td> | </td>
     <td><%=supplier.telephone%></td>
-    <td> | </td>
     <td><%=supplier.email%></td>
+    <td>
+      <form action="/suppliers/<%=supplier.id%>/edit" method="get">
+            <input type="submit" value="Change"/>
+      </form>
+    </td>
+    <td>
+      <% if StockItem.all_supplier_ids.include?(supplier.id) %>
+      <form action="/suppliers/<%=supplier.id%>/warning" method="get">
+        <input type="submit" value="Remove"/>
+      </form>
+      <% else %>
+      <form action="/suppliers/<%=supplier.id%>/delete" method="post">
+        <input type="submit" value="Remove"/>
+      </form>
+      <% end %>
+    </td>
   </tr>
     <% end %>
 </table>

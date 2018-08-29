@@ -1,22 +1,37 @@
 <h1>NEW STOCK</h1>
 
-<form>
+<form action="/stock" method="post">
   Name:
-  <input type="text" name="stock_name"></input>
+  <input type="text" name="name" required></input>
+  Distillery:
+  <select name="distillery_id">
+    <% for distillery in Distillery.all %>
+    <option value="<%=distillery.id%>"><%=distillery.name%></option>
+    <% end %>
+  </select>
   Style:
-  <select>
+  <select name="style">
     <option value="light">Light</option>
     <option value="rich">Rich</option>
     <option value="smoky">Smoky</option>
     <option value="fruity">Fruity</option>
   </select>
+  <br>
   Quantity:
-  <input type="text" name="quantity"></input>
-  Minimum Stock:
-  <input type="text" name="min_stock"></input>
-  Maximum Stock:
-  <input type="text" name="max_stock"></input>
-
+  <input type="text" name="quantity" required></input>
+  Minimum holding stock:
+  <input type="text" name="low_level" required></input>
+  Supplier:
+  <select name="supplier_id">
+    <% for supplier in Supplier.all %>
+    <option value="<%=supplier.id%>"><%=supplier.name%></option>
+    <% end %>
+  </select>
+  Cost (per bottle):
+  <input type="text" name="cost_price" required></input>
+  Selling Price (per bottle):
+  <input type="text" name="sale_price" required></input>
+  <br>
   <input type="submit" value="Create">
 
 </form>

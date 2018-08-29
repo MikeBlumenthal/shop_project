@@ -1,14 +1,13 @@
 <h1>NEW SUPPLIER</h1>
 
-<form>
+<form action="/suppliers" method="post">
 Name:
-<input type="text" name="supplier_name"></input><br>
+<input type="text" name="name" required></input><br>
 Address:<br>
-<input type="text" name="address_line1"></input><br>
-<input type="text" name="address_line2"></input><br>
+<input type="text" name="address"></input><br>
 Phone:<br>
 <input type="text" name="telephone"></input><br>
 E-mail:<br>
-<input type="text" name"email"></input>
+<input type="text" name="email"></input>
 <input type="submit" value="Create">
 </form>

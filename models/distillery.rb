@@ -58,6 +58,39 @@ class Distillery
     return distilleries.map { |distillery| Distillery.new( distillery ) }
   end
 
+  def self.order_by_name()
+    array = self.all
+    sorted_array = array.sort_by { |distillery| distillery.name }
+    return sorted_array
+  end
+
+  def self.order_by_location()
+    array = self.all
+    sorted_array = array.sort_by { |distillery| distillery.location }
+    return sorted_array
+  end
+
+  def self.order_by_established()
+    array = self.all
+    sorted_array = array.sort_by { |distillery| distillery.established }
+    return sorted_array
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM distilleries WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run( sql, values)
+    data = result.first
+    return Distillery.new( data )
+  end
+
+  def self.destroy(id)
+    sql = "DELETE FROM distilleries
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run( sql, values)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM distilleries"
     SqlRunner.run( sql )
