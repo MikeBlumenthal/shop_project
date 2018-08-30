@@ -1,9 +1,9 @@
 <h2>Stock still remaining supplied by <%=@supplier.name%></h2>
-<% @stock = @supplier.stock %>
-<ul>
-  <% for stock in @stock %>
-  <li>
-    <p><%=stock.distillery.name%> <%=stock.name%>: <%=stock.quantity%> bottles.</p>
-  </li>
+<% stock = @supplier.stock %>
+<tr>
+  <% for stock_item in stock %>
+  <td>
+    <p><a href="/stock/<%=stock_item.id%>"><%=stock_item.distillery.name%> <%=stock_item.name%>: <%=stock_item.quantity%> bottles.</a></p>
+  </td>
     <% end %>
-</ul>
+</tr>

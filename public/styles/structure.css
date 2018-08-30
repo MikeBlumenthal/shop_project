@@ -1,7 +1,6 @@
 
 body{
   color: saddlebrown;
-  background-color: navajowhite;
 }
 header{
   font-family: 'Kanit', sans-serif;
@@ -14,17 +13,32 @@ main{
 
 ul{
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: midnightblue;
+  border: 1px solid steelblue;
+  width: 100%;
 }
 
-nav {
-  display: list-item;
-  padding: 0px;
-  margin: 0px;
-  background-color: tan;
+li {
+  float: left;
+  border-right: 1px solid steelblue;
 }
 
-a, a:link, a:visited {
-  color: inherit;
+li a {
+  display: block;
+  color: silver;
+  text-align: center;
+  padding: 20px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: steelblue;
+}
+
+a {
   text-decoration: none;
 }
 
