@@ -1,4 +1,13 @@
-<h2><%=@stock_item.distillery.name%> <%=@stock_item.name%></h2>
-<h3>Style: <%=@stock_item.style%></h3>
-<h3><a href="/suppliers">Supplier: <%=stock_item.supplier.name%></a></h3>
-<h3>
+<div>
+  <h2><%=@stock_item.distillery.name%> <%=@stock_item.name%></h2>
+  <h3>Style: <%=@stock_item.style%></h3>
+  <h3><a href="/suppliers">Supplier: <%=stock_item.supplier.name%></a></h3>
+  <h3>Quantity: <%=@stock_item.quantity%>     <%=@stock_item.level%></h3>
+  <h3>Cost: £<%=@stock_item.cost_price%>  Sale Price: <%=@stock_item.sale_price%></h3>
+  <form action="/stock/<%=@stock_item.id%/edit>" method="get">
+    <input type="submit" value="Update Details">
+  </form>
+  <form action="/stock/<%=stock.id%>/delete" method="post">
+    <input type="submit" value="Remove Item"/>
+  </form>
+</div>
