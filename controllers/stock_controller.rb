@@ -19,9 +19,14 @@ post '/stock' do
   redirect to '/stock'
 end
 
+get '/stock/:id' do
+  @stock_item = StockItem.find(params[:id])
+  erb( :"stock/show" )
+end
+
 get '/stock/:id/edit' do
   @stock_item = StockItem.find(params[:id])
-  erb( :"stock/edit")
+  erb( :"stock/edit" )
 end
 
 post '/stock/:id' do

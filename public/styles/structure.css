@@ -1,6 +1,7 @@
 
 body{
-  color: red;
+  color: saddlebrown;
+  background-color: navajowhite;
 }
 header{
   font-family: 'Kanit', sans-serif;
@@ -19,12 +20,11 @@ nav {
   display: list-item;
   padding: 0px;
   margin: 0px;
-  padding-right: 25px;
-  background-color: yellow;
+  background-color: tan;
 }
 
 a, a:link, a:visited {
-  color: red;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -35,4 +35,5 @@ a, a:link, a:visited {
 
 .content {
   text-align: center;
+  align-content: center;
 }
