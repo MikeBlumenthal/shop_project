@@ -1,1 +1,30 @@
-<%= yield %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quattrocento+Sans" rel="stylesheet">
+  <link href="/styles/structure.css" type="text/css" rel="stylesheet" >
+  <link href="/styles/forms.css" type="text/css" rel="stylesheet" >
+  <link href="/styles/tables.css" type="text/css" rel="stylesheet" >
+  <title>ctrl-malt-del</title>
+</head>
+<body class="flex">
+  <header>
+    <h1>CTRL-MALT-DEL</h1>
+    <h2><a href="/">-whisky stock control-</a></h2>
+    <nav>
+      <ul>
+        <li><a href="/stock">Stock</a></li>
+        <li><a href="/suppliers">Suppliers</a></li>
+        <li><a href="/distilleries">Distilleries</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="content">
+      <%= yield %>
+    </section>
+  </main>
+</body>
+</html>

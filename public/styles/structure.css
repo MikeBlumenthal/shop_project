@@ -1,0 +1,38 @@
+
+body{
+  color: red;
+}
+header{
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+}
+
+main{
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+ul{
+  list-style-type: none;
+}
+
+nav {
+  display: list-item;
+  padding: 0px;
+  margin: 0px;
+  padding-right: 25px;
+  background-color: yellow;
+}
+
+a, a:link, a:visited {
+  color: red;
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  text-align: center;
+}

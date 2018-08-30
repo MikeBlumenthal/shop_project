@@ -1,3 +1,4 @@
+<h3><a href="/stock/new">Add New Stock</a></h3>
 <table>
   <tr>
     <th>Distillery</th>
@@ -9,8 +10,8 @@
     <th>Selling Price</th>
     <th>Margin</th>
   </tr>
-  <% @stock_f = StockItem.all_levels%>
-  <% for stock in @stock_f %>
+  <% stock_f = StockItem.all_levels%>
+  <% for stock in stock_f %>
   <tr>
     <td><%=stock.distillery.name%></td>
     <td><%=stock.name%></td>

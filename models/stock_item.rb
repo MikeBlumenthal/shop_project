@@ -112,23 +112,24 @@ class StockItem
 
         def self.all_distillery_ids()
           all_stock = self.all
-          array = []
-          all_stock.each { |stock| array << stock.distillery.id }
-          array = array.uniq
-          return array
+          dist_array = []
+          all_stock.each { |stock| dist_array << stock.distillery.id }
+          dist_array = dist_array.uniq
+          return dist_array
         end
 
         def self.all_supplier_ids()
           all_stock = self.all
-          array = []
-          all_stock.each { |stock| array << stock.supplier.id }
-          array = array.uniq
-          return array
+          supplier_array = []
+          all_stock.each { |stock| supplier_array << stock.supplier.id }
+          supplier_array = supplier_array.uniq
+          return supplier_array
         end
 
         def self.all_levels()
           all_stock = self.all
-          all_stock.sort_by {|stock| stock.level }
+          stock_by_level = all_stock.sort_by {|stock| stock.level }
+          return stock_by_level.reverse
         end
 
         def self.find(id)
