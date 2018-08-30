@@ -21,11 +21,11 @@
     <td>
       <% if StockItem.all_supplier_ids.include?(supplier.id) %>
       <form action="/suppliers/<%=supplier.id%>/warning" method="get">
-        <input type="submit" value="Remove"/>
+        <input type="submit" value="Remove Supplier"/>
       </form>
       <% else %>
       <form action="/suppliers/<%=supplier.id%>/delete" method="post">
-        <input type="submit" value="Remove"/>
+        <input type="submit" value="Remove Supplier"/>
       </form>
       <% end %>
     </td>

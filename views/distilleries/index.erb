@@ -14,17 +14,17 @@
     <td><%=distillery.established%></td>
     <td>
       <form action="/distilleries/<%=distillery.id%>/edit" method="get">
-            <input type="submit" value="Change"/>
+            <input type="submit" value="Change Details"/>
       </form>
     </td>
     <td>
       <% if StockItem.all_distillery_ids.include?(distillery.id) %>
       <form action="/distilleries/<%=distillery.id%>/warning" method="get">
-        <input type="submit" value="Remove"/>
+        <input type="submit" value="Remove Distillery"/>
       </form>
       <% else %>
       <form action="/distilleries/<%=distillery.id%>/delete" method="post">
-        <input type="submit" value="Remove"/>
+        <input type="submit" value="Remove Distillery"/>
       </form>
       <% end %>
     </td>

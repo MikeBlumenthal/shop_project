@@ -31,33 +31,33 @@ class StockItem
       VALUES
       ( $1, $2, $3, $4, $5, $6, $7, $8 )
       RETURNING id"
-    values = [ @name, @distillery_id, @supplier_id, @quantity, @style, @low_level, @cost_price, @sale_price ]
-    result = SqlRunner.run( sql, values )
-    @id = result.first['id'].to_i
-  end
+      values = [ @name, @distillery_id, @supplier_id, @quantity, @style, @low_level, @cost_price, @sale_price ]
+      result = SqlRunner.run( sql, values )
+      @id = result.first['id'].to_i
+    end
 
-  def update()
-    sql = "UPDATE stock
-    SET
-    ( name,
-      distillery_id,
-      supplier_id,
-      quantity,
-      style,
-      low_level,
-      cost_price,
-      sale_price )
-      =
-    ( $1, $2, $3, $4, $5, $6, $7, $8 )
-      WHERE id = $9"
-    values = [ @name, @distillery_id, @supplier_id, @quantity, @style,
-    @low_level, @cost_price, @sale_price, @id ]
-    SqlRunner.run( sql, values)
-  end
+    def update()
+      sql = "UPDATE stock
+      SET
+      ( name,
+        distillery_id,
+        supplier_id,
+        quantity,
+        style,
+        low_level,
+        cost_price,
+        sale_price )
+        =
+        ( $1, $2, $3, $4, $5, $6, $7, $8 )
+        WHERE id = $9"
+        values = [ @name, @distillery_id, @supplier_id, @quantity, @style,
+          @low_level, @cost_price, @sale_price, @id ]
+          SqlRunner.run( sql, values)
+        end
 
-  def delete()
-    sql = "DELETE FROM stock
-    WHERE id = $1"
+        def delete()
+          sql = "DELETE FROM stock
+          WHERE id = $1"
           values = [@id]
           SqlRunner.run( sql, values )
         end
@@ -109,18 +109,18 @@ class StockItem
           return price.round(2)
         end
 
-  def level_colour
-    case self.level
-    when "NONE"
-      return "#000000;color:#FFFFFF"
-    when "LOW"
-      return "#FF0066"
-    when "HIGH"
-      return "#00FF99"
-    when "JUST RIGHT"
-      return "white"
-    end
-  end
+        def level_colour
+          case self.level
+          when "NONE"
+            return "#000000;color:#FFFFFF"
+          when "LOW"
+            return "#FF0066"
+          when "HIGH"
+            return "#00FF99"
+          when "JUST RIGHT"
+            return "white"
+          end
+        end
 
         def self.all()
           sql = "SELECT * FROM stock"

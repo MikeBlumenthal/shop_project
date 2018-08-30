@@ -14,30 +14,55 @@ ul{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: midnightblue;
-  border: 1px solid steelblue;
+  background-color: grey;
+  border: 1px solid dimgrey;
   width: 100%;
 }
 
 li {
   float: left;
-  border-right: 1px solid steelblue;
+  border-right: 1px solid dimgrey;
 }
 
 li a {
   display: block;
-  color: silver;
+  color: white;
   text-align: center;
   padding: 20px;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: steelblue;
+  background-color: dimgrey;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
+
+}
+
+h3 a{
+  border: 2px dotted black;
+  padding: 5px;
+}
+
+td, th {
+  text-align: left;
+}
+
+td {
+  padding: 10px 20px 0px 0px;
+}
+
+th {
+  padding: 0px 20px 10px 0px;
+  border-bottom: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
 
 .flex {

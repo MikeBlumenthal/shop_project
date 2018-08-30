@@ -2,14 +2,14 @@
 
 <form action="/stock/<%=@stock_item.id%>" method="post">
   Name:
-  <input type="text" name="name" value="<%=@stock_item.name%>"></input>
+  <input type="text" name="name" value="<%=@stock_item.name%>"></input><br>
   Distillery:
   <select name="distillery_id">
     <option value="<%=@stock_item.distillery.id%>" selected><%=@stock_item.distillery.name%></option>
     <% for distillery in Distillery.all %>
     <option value="<%=distillery.id%>"><%=distillery.name%></option>
     <% end %>
-  </select>
+  </select><br>
   Style:
   <select name="style">
     <option value="<%=@stock_item.style%>" selected><%=@stock_item.style%></option>
@@ -20,21 +20,21 @@
   </select>
   <br>
   Quantity:
-  <input type="text" name="quantity" value="<%=@stock_item.quantity%>"></input>
+  <input type="text" name="quantity" value="<%=@stock_item.quantity%>"></input><br>
   Minimum holding stock:
-  <input type="text" name="low_level" value="<%=@stock_item.low_level%>"></input>
+  <input type="text" name="low_level" value="<%=@stock_item.low_level%>"></input><br>
   Supplier:
   <select name="supplier_id">
     <option value="<%=@stock_item.supplier.id%>" selected><%=@stock_item.supplier.name%></option>
     <% for supplier in Supplier.all %>
     <option value="<%=supplier.id%>"><%=supplier.name%></option>
     <% end %>
-  </select>
+  </select><br>
   Cost (per bottle):
-  <input type="text" name="cost_price" value="<%=@stock_item.cost_price%>"></input>
+  <input type="text" name="cost_price" value="<%=@stock_item.cost_price%>"></input><br>
   Selling Price (per bottle):
   <input type="text" name="sale_price" value="<%=@stock_item.sale_price%>"></input>
   <br>
-  <input type="submit" value="Update">
+  <input type="submit" value="Update Details">
 
 </form>
