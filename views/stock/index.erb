@@ -9,16 +9,16 @@
     <th>Selling Price</th>
     <th>Margin</th>
   </tr>
-  <% stock_f = StockItem.all_levels%>
-  <% for stock in stock_f %>
+  <% all_stock = StockItem.all%>
+  <% for stock in all_stock %>
   <tr>
     <td><%=stock.distillery.name%></td>
-    <td><a href="/stock/<%=stock.id%>"><%=stock.name%></a></td>
+    <td><%=stock.name%></td>
     <td><%=stock.quantity%></td>
     <td><%=stock.supplier.name%></td>
     <td style="background:<%=stock.level_colour%>;"><%=stock.level%></td>
     <td>£<%=stock.sale_price.round(2)%></td>
-    <td><%=stock.profit%>%</td>
+    <td><%=stock.profit%>%</td></a>
     <td>
       <form action="/stock/<%=stock.id%>/edit" method="get">
             <input type="submit" value="Change Details"/>

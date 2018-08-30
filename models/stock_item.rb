@@ -68,13 +68,13 @@ class StockItem
 
         def level()
           if @quantity == 0
-            return "NONE"
+            return "OUT OF STOCK"
           elsif @quantity < @low_level
             return "LOW"
           elsif @quantity > self.high_stock
             return "HIGH"
           else
-            return "JUST RIGHT"
+            return "IN STOCK"
           end
         end
 
@@ -111,13 +111,13 @@ class StockItem
 
         def level_colour
           case self.level
-          when "NONE"
+          when "OUT OF STOCK"
             return "#000000;color:#FFFFFF"
           when "LOW"
             return "#FF0066"
           when "HIGH"
             return "#00FF99"
-          when "JUST RIGHT"
+          when "IN STOCK"
             return "white"
           end
         end
