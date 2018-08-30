@@ -16,7 +16,7 @@
     <td><a href="/stock/<%=stock.id%>"><%=stock.name%></a></td>
     <td><%=stock.quantity%></td>
     <td><%=stock.supplier.name%></td>
-    <td><%=stock.level%></td>
+    <td style="background:<%=stock.level_colour%>;"><%=stock.level%></td>
     <td>£<%=stock.sale_price.round(2)%></td>
     <td><%=stock.profit%>%</td>
     <td>
