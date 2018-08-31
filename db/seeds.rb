@@ -1,6 +1,6 @@
-require_relative('distillery.rb')
-require_relative('supplier.rb')
-require_relative('stock_item.rb')
+require_relative('../models/distillery.rb')
+require_relative('../models/supplier.rb')
+require_relative('../models/stock_item.rb')
 
 StockItem.delete_all
 Distillery.delete_all
@@ -11,43 +11,43 @@ distillery1 = Distillery.new(
     'name' => 'Glenrothes',
     'location' => 'Speyside',
     'established' => '1878'
-    }
-  )
+  }
+)
 distillery2 = Distillery.new(
   {
     'name' => 'Arran',
     'location' => 'Islands',
     'established' => '1995'
-    }
-  )
+  }
+)
 distillery3 = Distillery.new(
   {
     'name' => 'Highland Park',
     'location' => 'Islands',
     'established' => '1798'
-    }
-  )
+  }
+)
 distillery4 = Distillery.new(
   {
     'name' => 'Auchentoshan',
     'location' => 'Lowlands',
     'established' => '1823'
-    }
-  )
+  }
+)
 distillery5 = Distillery.new(
   {
     'name' => 'Caol Ila',
     'location' => 'Islay',
     'established' => '1846'
-    }
-  )
+  }
+)
 distillery6 = Distillery.new(
   {
     'name' => 'Clynelish',
     'location' => 'Highlands',
     'established' => '1819'
-    }
-  )
+  }
+)
 
 distillery1.save
 distillery2.save
@@ -116,8 +116,8 @@ stock3 = StockItem.new(
     'quantity' => '3',
     'style' => 'fruity',
     'low_level' => '6',
-    'cost_price' => '21.04',
-    'sale_price' => '29.99'
+    'cost_price' => '35.04',
+    'sale_price' => '44.99'
   }
 )
 stock4 = StockItem.new(
@@ -128,8 +128,8 @@ stock4 = StockItem.new(
     'quantity' => '0',
     'style' => 'fruity',
     'low_level' => '6',
-    'cost_price' => '21.15',
-    'sale_price' => '29.99'
+    'cost_price' => '32.15',
+    'sale_price' => '44.99'
   }
 )
 stock5 = StockItem.new(

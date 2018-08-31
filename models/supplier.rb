@@ -19,66 +19,66 @@ class Supplier
       address,
       telephone,
       email )
-    VALUES
-    ( $1, $2, $3, $4 )
-    RETURNING id"
-    values = [ @name, @address, @telephone, @email ]
-    result = SqlRunner.run( sql, values )
-    @id = result.first['id'].to_i
-  end
+      VALUES
+      ( $1, $2, $3, $4 )
+      RETURNING id"
+      values = [ @name, @address, @telephone, @email ]
+      result = SqlRunner.run( sql, values )
+      @id = result.first['id'].to_i
+    end
 
 
-  def update()
-    sql = "UPDATE suppliers
-    SET
-    ( name,
-      address,
-      telephone,
-      email
-    ) =
-    ( $1, $2, $3, $5 )
-    WHERE id = $4"
-    values = [ @name, @address, @telephone, @id, @email ]
-    SqlRunner.run( sql, values )
-  end
+    def update()
+      sql = "UPDATE suppliers
+      SET
+      ( name,
+        address,
+        telephone,
+        email
+        ) =
+        ( $1, $2, $3, $5 )
+        WHERE id = $4"
+        values = [ @name, @address, @telephone, @id, @email ]
+        SqlRunner.run( sql, values )
+      end
 
-  def delete()
-    sql = "DELETE FROM suppliers WHERE $1 = id"
-    values = [@id]
-    SqlRunner.run( sql, values )
-  end
+      def delete()
+        sql = "DELETE FROM suppliers WHERE $1 = id"
+        values = [@id]
+        SqlRunner.run( sql, values )
+      end
 
-  def stock()
-    sql ="SELECT * FROM stock WHERE supplier_id = $1"
-    values = [@id]
-    result = SqlRunner.run( sql, values)
-    result.map { |stock_item| StockItem.new( stock_item ) }
-  end
+      def stock()
+        sql ="SELECT * FROM stock WHERE supplier_id = $1"
+        values = [@id]
+        result = SqlRunner.run( sql, values)
+        result.map { |stock_item| StockItem.new( stock_item ) }
+      end
 
-  def self.all()
-    sql = "SELECT * FROM suppliers"
-    suppliers = SqlRunner.run( sql )
-    return suppliers.map { |supplier| Supplier.new(supplier) }
-  end
+      def self.all()
+        sql = "SELECT * FROM suppliers"
+        suppliers = SqlRunner.run( sql )
+        return suppliers.map { |supplier| Supplier.new(supplier) }
+      end
 
-  def self.find(id)
-    sql = "SELECT * FROM suppliers WHERE id = $1"
-    values = [id]
-    result = SqlRunner.run( sql, values)
-    data = result.first
-    return Supplier.new( data )
-  end
+      def self.find(id)
+        sql = "SELECT * FROM suppliers WHERE id = $1"
+        values = [id]
+        result = SqlRunner.run( sql, values)
+        data = result.first
+        return Supplier.new( data )
+      end
 
-  def self.delete_all()
-    sql = "DELETE FROM suppliers"
-    SqlRunner.run( sql )
-  end
+      def self.delete_all()
+        sql = "DELETE FROM suppliers"
+        SqlRunner.run( sql )
+      end
 
-  def self.destroy(id)
-    sql = "DELETE FROM suppliers
-    WHERE id = $1"
-    values = [id]
-    SqlRunner.run( sql, values)
-  end
+      def self.destroy(id)
+        sql = "DELETE FROM suppliers
+        WHERE id = $1"
+        values = [id]
+        SqlRunner.run( sql, values)
+      end
 
-end
+    end

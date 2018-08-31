@@ -17,83 +17,83 @@ class Distillery
     ( name,
       location,
       established )
-    VALUES
-    ( $1, $2, $3 )
-    RETURNING id"
-    values = [ @name, @location, @established ]
-    result = SqlRunner.run( sql, values )
-    @id = result.first['id'].to_i
-  end
-
-  def update()
-    sql = "UPDATE distilleries
-    SET
-    ( name,
-      location,
-      established
-      ) =
+      VALUES
       ( $1, $2, $3 )
-      WHERE id = $4"
-      values = [ @name, @location, @established, @id ]
-      SqlRunner.run( sql, values )
-  end
+      RETURNING id"
+      values = [ @name, @location, @established ]
+      result = SqlRunner.run( sql, values )
+      @id = result.first['id'].to_i
+    end
 
-  def delete()
-    sql = "DELETE FROM distilleries
-    WHERE id = $1"
-    values = [@id]
-    SqlRunner.run( sql, values )
-  end
+    def update()
+      sql = "UPDATE distilleries
+      SET
+      ( name,
+        location,
+        established
+        ) =
+        ( $1, $2, $3 )
+        WHERE id = $4"
+        values = [ @name, @location, @established, @id ]
+        SqlRunner.run( sql, values )
+      end
 
-  def stock()
-    sql ="SELECT * FROM stock WHERE distillery_id = $1"
-    values = [@id]
-    result = SqlRunner.run( sql, values)
-    result.map { |stock_item| StockItem.new( stock_item ) }
-  end
+      def delete()
+        sql = "DELETE FROM distilleries
+        WHERE id = $1"
+        values = [@id]
+        SqlRunner.run( sql, values )
+      end
 
-  def self.all()
-    sql = "SELECT * FROM distilleries"
-    distilleries = SqlRunner.run( sql )
-    return distilleries.map { |distillery| Distillery.new( distillery ) }
-  end
+      def stock()
+        sql ="SELECT * FROM stock WHERE distillery_id = $1"
+        values = [@id]
+        result = SqlRunner.run( sql, values)
+        result.map { |stock_item| StockItem.new( stock_item ) }
+      end
 
-  def self.order_by_name()
-    array = self.all
-    sorted_array = array.sort_by { |distillery| distillery.name }
-    return sorted_array
-  end
+      def self.all()
+        sql = "SELECT * FROM distilleries"
+        distilleries = SqlRunner.run( sql )
+        return distilleries.map { |distillery| Distillery.new( distillery ) }
+      end
 
-  def self.order_by_location()
-    array = self.all
-    sorted_array = array.sort_by { |distillery| distillery.location }
-    return sorted_array
-  end
+      def self.order_by_name()
+        array = self.all
+        sorted_array = array.sort_by { |distillery| distillery.name }
+        return sorted_array
+      end
 
-  def self.order_by_established()
-    array = self.all
-    sorted_array = array.sort_by { |distillery| distillery.established }
-    return sorted_array
-  end
+      def self.order_by_location()
+        array = self.all
+        sorted_array = array.sort_by { |distillery| distillery.location }
+        return sorted_array
+      end
 
-  def self.find(id)
-    sql = "SELECT * FROM distilleries WHERE id = $1"
-    values = [id]
-    result = SqlRunner.run( sql, values)
-    data = result.first
-    return Distillery.new( data )
-  end
+      def self.order_by_established()
+        array = self.all
+        sorted_array = array.sort_by { |distillery| distillery.established }
+        return sorted_array
+      end
 
-  def self.destroy(id)
-    sql = "DELETE FROM distilleries
-    WHERE id = $1"
-    values = [id]
-    SqlRunner.run( sql, values)
-  end
+      def self.find(id)
+        sql = "SELECT * FROM distilleries WHERE id = $1"
+        values = [id]
+        result = SqlRunner.run( sql, values)
+        data = result.first
+        return Distillery.new( data )
+      end
 
-  def self.delete_all()
-    sql = "DELETE FROM distilleries"
-    SqlRunner.run( sql )
-  end
+      def self.destroy(id)
+        sql = "DELETE FROM distilleries
+        WHERE id = $1"
+        values = [id]
+        SqlRunner.run( sql, values)
+      end
 
-end
+      def self.delete_all()
+        sql = "DELETE FROM distilleries"
+        SqlRunner.run( sql )
+      end
+
+    end

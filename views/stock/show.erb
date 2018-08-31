@@ -6,7 +6,7 @@
   <h3>Cost: £<%=@stock_item.cost_price%></h3>
   <h3>Sale Price: £<%=@stock_item.sale_price%></h3>
   <form action="/stock/<%=@stock_item.id%>/edit" method="get">
-        <input type="submit" value="Change Details"/>
+    <input type="submit" value="Change Details"/>
   </form>
   <form action="/stock/<%=@stock_item.id%>/delete" method="post">
     <input type="submit" value="Remove Item"/>
